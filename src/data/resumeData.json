@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "schemaVersion": "resume-json-v2",
+    "lastUpdated": "2026-02-15",
+    "owner": {
+      "name": "Christopher Jordon",
+      "preferredTitles": [
+        "Junior Frontend Developer (React)",
+        "Junior Full-Stack Developer"
+      ],
+      "location": {
+        "city": "Las Vegas",
+        "region": "NV",
+        "country": "US"
+      },
+      "contact": {
+        "phone": "(702) 695-5288",
+        "email": "cjone4all38@gmail.com"
+      },
+      "workAuthorization": {
+        "status": "Authorized to work in the US for any employer",
+        "sponsorshipRequired": false
+      }
+    },
+    "links_required": [
+      { "label": "GitHub", "url": "https://github.com/Jordon-py" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/christopher-jordon-a369092b3" },
+      { "label": "NFL Prediction Platform (Live)", "url": "https://nfl-ml-predictions.vercel.app/" },
+      { "label": "NFL Prediction Platform (Repo)", "url": "https://github.com/Jordon-py/NFL_ML_Predictions" },
+      { "label": "CodeArchive / CodeArch (Repo)", "url": "https://github.com/Jordon-py/Code_Arch" },
+      { "label": "General Assembly Full-Stack Cert (Drive)", "url": "https://drive.google.com/file/d/1MR8d-rT22Cyu5GRtWG4Nxwx397_SZTyz/view" },
+      { "label": "Coursera Python Cert (Verify)", "url": "https://www.coursera.org/account/accomplishments/verify/SZDTBD3C9XGM" }
+    ],
+    "integrity": {
+      "truthfulnessPolicy": [
+        "Do not claim tools/tech not demonstrated in repos or deployed apps.",
+        "Quantified metrics must be tied to evidence notes.",
+        "Unknown dates remain null until confirmed."
+      ]
+    }
+  },
+
+  "activeVariant": "fullstack",
+
+  "variants": {
+    "frontend": {
+      "headline": "Junior Frontend Developer (React) • React (Vite) • Accessibility-first UI • API-integrated apps",
+      "summary_short": "I’m an early-career full-stack developer who learns fast and proves it by shipping. I build API-first apps with React (Vite) focused on clear UX, accessibility, and maintainable code.",
+      "summary_long": "I’m an early-career full-stack developer who learns fast and proves it by shipping. If your team uses a framework, library, or language I haven’t used yet, I’m ready to learn it and get productive quickly. I have solid web fundamentals (HTML/CSS/JavaScript) and I build API-first apps with React (Vite) on the frontend and FastAPI/Express on the backend—focused on clear UX, accessibility, and maintainable code. I’ve deployed full-stack projects and worked through real production issues (CORS, environment variables, API routing) to keep integrations stable.",
+      "skillFocus": ["frontend", "tooling", "backend_basics"]
+    },
+
+    "fullstack": {
+      "headline": "Junior Full-Stack Developer (React • Node • FastAPI • Python/ML) • Deployed apps • API-first delivery",
+      "summary_short": "I’m an early-career full-stack developer who learns fast and proves it by shipping. I build API-first apps with React (Vite) & FastAPI/Express, focused on clear UX and maintainable code.",
+      "summary_long": "I’m an early-career full-stack developer who learns fast and proves it by shipping. If your team uses a framework, library, or language I haven’t used yet, I’m ready to learn it and get productive quickly. I have solid web fundamentals (HTML/CSS/JavaScript) and I build API-first apps with React (Vite) on the frontend and FastAPI/Express on the backend—focused on clear UX, accessibility, and maintainable code. I’ve deployed full-stack projects and worked through real production issues (CORS, environment variables, API routing) to keep integrations stable.",
+      "skillFocus": ["frontend", "backend", "data_ml", "tooling", "security_basics"]
+    }
+  },
+
+  "basics": {
+    "name": "Christopher Jordon",
+    "label": "Junior Frontend / Full-Stack Developer",
+    "headline": "",
+    "profiles": [
+      { "network": "GitHub", "url": "https://github.com/Jordon-py" },
+      { "network": "LinkedIn", "url": "https://www.linkedin.com/in/christopher-jordon-a369092b3" }
+    ]
+  },
+
+  "ats": {
+    "targetTitles": [
+      "Junior Frontend Developer",
+      "Junior Front- End Developer",
+      "Junior Full Stack Developer",
+      "Junior Full-Stack Developer",
+      "Frontend Developer",
+      "Full Stack Developer"
+    ],
+    "keyword_spine": {
+      "frontend": ["React", "JavaScript", "Vite", "HTML", "CSS", "Accessibility", "Responsive Design", "React Router"],
+      "backend": ["Node.js", "Express", "FastAPI", "Python", "REST API", "JSON", "CORS", "Environment Variables"],
+      "data_ml": ["pandas", "NumPy", "scikit-learn", "Regression", "Classification", "ROC AUC", "LogLoss", "Brier Score", "MAE", "RMSE"],
+      "tooling": ["Git", "GitHub", "Vercel", "Heroku", "Linux CLI", "Debugging", "Documentation"],
+      "security": ["Secure Coding", "NIST CSF", "Auth Basics"]
+    },
+    "section_order": [
+      "summary",
+      "skills",
+      "projects",
+      "experience",
+      "education",
+      "certifications"
+    ],
+    "export_text_blocks": {
+      "one_line": "",
+      "summary": "",
+      "core_skills": "",
+      "project_highlights": ""
+    }
+  },
+
+  "summary": {
+    "short": "",
+    "long": "",
+    "highlights": [
+      "Shipped deployed full-stack applications and resolved production integration issues (CORS/env/API routing).",
+      "Builds accessible, responsive React UIs with clear state/data flow and user-focused error handling.",
+      "API-first mindset: consistent contracts, structured responses, and maintainable code organization."
+    ]
+  },
+
+  "skills": {
+    "frontend": {
+      "label": "Frontend",
+      "items": [
+        { "name": "React (Vite)", "level": "strong" },
+        { "name": "React Router", "level": "working" },
+        { "name": "JavaScript (ES6+)", "level": "strong" },
+        { "name": "HTML5", "level": "strong" },
+        { "name": "CSS3 (responsive & accessible)", "level": "strong" }
+      ]
+    },
+    "backend": {
+      "label": "Backend",
+      "items": [
+        { "name": "Node.js", "level": "working" },
+        { "name": "Express", "level": "working" },
+        { "name": "FastAPI", "level": "strong" },
+        { "name": "REST API design", "level": "working" },
+        { "name": "Auth basics", "level": "foundation" },
+        { "name": "JSON / schema thinking", "level": "working" }
+      ]
+    },
+    "data_ml": {
+      "label": "Data / ML",
+      "items": [
+        { "name": "Python", "level": "strong" },
+        { "name": "pandas", "level": "working" },
+        { "name": "NumPy", "level": "working" },
+        { "name": "scikit-learn", "level": "working" },
+        { "name": "Preprocessing pipelines", "level": "working" },
+        { "name": "Evaluation (MAE/RMSE, ROC AUC, LogLoss, Brier)", "level": "working" }
+      ]
+    },
+    "tooling": {
+      "label": "DevOps / Tools",
+      "items": [
+        { "name": "Git / GitHub", "level": "strong" },
+        { "name": "Vercel", "level": "working" },
+        { "name": "Heroku", "level": "working" },
+        { "name": "Linux CLI", "level": "foundation" }
+      ]
+    },
+    "security_basics": {
+      "label": "Security",
+      "items": [
+        { "name": "NIST CSF awareness", "level": "foundation" },
+        { "name": "Secure coding practices", "level": "foundation" }
+      ]
+    }
+  },
+
+  "projects": [
+    {
+      "name": "NFL Prediction Platform",
+      "type": "Full-Stack ML Web App",
+      "dates": { "start": "2025-01", "end": null },
+      "stack": ["React (Vite)", "FastAPI", "Python", "scikit-learn"],
+      "links": [
+        { "label": "Live App", "url": "https://nfl-ml-predictions.vercel.app/" },
+        { "label": "Repository", "url": "https://github.com/Jordon-py/NFL_ML_Predictions" }
+      ],
+      "impactBullets": [
+        "Built a FastAPI prediction service that loads versioned model bundles (joblib) and returns structured, user-friendly prediction responses consumed by a React frontend.",
+        "Implemented leak-safe, time-aware evaluation and probability calibration; tracked score accuracy (MAE/RMSE) and win probability quality (ROC AUC, Brier).",
+        "Improved production reliability by debugging and resolving cross-environment deployment issues (CORS configuration, environment variables, and API routing) to keep the React↔API integration stable.",
+        "Enhanced developer experience with consistent API contracts, structured errors, and reproducible dataset/versioning habits to reduce training/inference drift."
+      ],
+      "evidence": {
+        "modelMetrics": [
+          {
+            "metric": "ROC AUC",
+            "value": 0.91,
+            "context": "win probability baseline",
+            "note": "From baseline training/eval run; keep updated if you publish a new benchmark."
+          },
+          {
+            "metric": "Brier Score",
+            "valueRange": [0.12, 0.13],
+            "context": "calibrated probability baseline",
+            "note": "Lower is better; indicates probability quality (calibration + accuracy)."
+          }
+        ],
+        "engineeringProof": [
+          {
+            "claim": "Production debugging (CORS/env/API routing)",
+            "note": "Demonstrated through deployed app behavior and deployment troubleshooting work."
+          }
+        ]
+      },
+      "atsKeywords": [
+        "React",
+        "FastAPI",
+        "REST API",
+        "CORS",
+        "Deployment",
+        "Python",
+        "scikit-learn",
+        "Calibration",
+        "Model Bundle",
+        "Versioning"
+      ]
+    },
+
+    {
+      "name": "CodeArchive (CodeArch)",
+      "type": "React SPA — Snippet Workspace",
+      "dates": { "start": "2025-01", "end": "2025-12" },
+      "stack": ["React", "JavaScript", "CSS"],
+      "links": [
+        { "label": "Repository", "url": "https://github.com/Jordon-py/Code_Arch" }
+      ],
+      "impactBullets": [
+        "Built a React single-page app for saving, tagging, versioning, and exporting code snippets for fast reuse.",
+        "Designed import/export flows and a sandbox preview concept so stored snippets are immediately practical, not just archived.",
+        "Focused on clear component structure, readable UI, and accessibility-friendly styling to support real developer workflows."
+      ],
+      "evidence": {
+        "productSignals": [
+          {
+            "claim": "Low-friction snippet reuse via search + export",
+            "note": "Backed by repo features and UI flow design (import/export/preview)."
+          }
+        ]
+      },
+      "atsKeywords": [
+        "React",
+        "SPA",
+        "JavaScript",
+        "Accessibility",
+        "UX",
+        "Component Design"
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "General Assembly",
+      "location": "Remote",
+      "role": "Full-Stack Software Engineering (420+ hrs)",
+      "dates": { "start": "2024", "end": "2025" },
+      "bullets": [
+        "Built and shipped React (Vite) apps with a front-end focus—responsive, accessible UI, clean component structure, routing, and reliable API integration using strong HTML/CSS/JavaScript fundamentals.",
+        "Built and consumed REST APIs with FastAPI/Node (Express), using JSON contracts, validation/error handling, and production deployment troubleshooting (Git workflow, CORS, environment variables, API routing) to keep frontend↔backend integrations stable."
+      ],
+      "translation_to_dev": [
+        "Frontend focus → Crafting high-performance, accessible user interfaces with modern React practices.",
+        "Full-stack stability → Bridging the gap between frontend and backend with robust API design and deployment expertise."
+      ]
+    },
+    {
+      "company": "Daniel’s Jewelers",
+      "location": "Las Vegas, NV",
+      "role": "Key Holder & Customer Sales Associate",
+      "dates": { "start": null, "end": null },
+      "bullets": [
+        "Drove a 7% increase in monthly sales by diagnosing customer needs and recommending tailored solutions.",
+        "Managed cash and high-value transactions with 100% accuracy while maintaining policy compliance.",
+        "Implemented a customer feedback process that reduced complaints by 15% and improved repeat business.",
+        "Trained and mentored 5 new team members on POS workflows and service standards, improving onboarding efficiency by 20%.",
+        "Partnered with inventory and marketing to align product displays with seasonal promotions, boosting foot traffic by 10%."
+      ],
+      "translation_to_dev": [
+        "User-first communication → clearer UI copy, fewer UX dead-ends, better troubleshooting.",
+        "High-trust handling → careful attention to correctness and edge cases."
+      ]
+    },
+    {
+      "company": "Amazon Fulfillment Center (ONT2)",
+      "location": "CA (ONT2)",
+      "role": "Picker / Stow / ICQA & Customer Service Roles",
+      "dates": { "start": null, "end": null },
+      "bullets": [
+        "Strengthened problem-solving and quality control in a high-velocity environment; communicated clearly across teams under time constraints."
+      ],
+      "translation_to_dev": [
+        "Quality control mindset → bug triage discipline and consistent validation habits."
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "University of Nevada, Las Vegas (UNLV)",
+      "program": "Cyber Security Bootcamp (Online)",
+      "year": "2024",
+      "details": "Hands-on work aligned to the NIST Cybersecurity Framework; incident response and threat assessment exercises."
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "General Assembly Full-Stack cert",
+      "date": "2025-03",
+      "url": "https://drive.google.com/file/d/1MR8d-rT22Cyu5GRtWG4Nxwx397_SZTyz/view"
+    },
+    {
+      "name": "Introduction to Python — Coursera",
+      "date": "2024-07",
+      "url": "https://www.coursera.org/account/accomplishments/verify/SZDTBD3C9XGM"
+    }
+  ],
+
+  "ui": {
+    "portfolioMapping": {
+      "defaultSection": "projects",
+      "blocks": [
+        {
+          "id": "hero",
+          "title": "Christopher Jordon",
+          "subtitle": "Junior Frontend / Full-Stack Developer",
+          "sourcePaths": [
+            "variants.${activeVariant}.headline",
+            "summary.short",
+            "basics.profiles"
+          ]
+        },
+        {
+          "id": "proof",
+          "title": "Proof Links",
+          "sourcePaths": ["meta.links_required"]
+        },
+        {
+          "id": "projects",
+          "title": "Projects",
+          "sourcePaths": ["projects"]
+        },
+        {
+          "id": "skills",
+          "title": "Skills",
+          "sourcePaths": ["skills"]
+        }
+      ],
+      "cards": {
+        "projectCard": {
+          "fields": ["name", "type", "stack", "impactBullets", "links"]
+        }
+      }
+    }
+  }
+}

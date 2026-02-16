@@ -1,0 +1,275 @@
+/* Base Layout */
+#root {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: left;
+  position: relative;
+  z-index: 10;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Glassmorphism System - Luxury Update */
+.glass-card {
+  background: rgba(20, 20, 30, 0.4); /* Darker base for contrast */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* Highlight top edge */
+  border-left: 1px solid rgba(255, 255, 255, 0.15); /* Highlight left edge */
+  border-radius: 24px; /* Softer, more modern curves */
+  padding: 2.5rem;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Inner stroke */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like ease */
+}
+
+.glass-card:hover {
+  border-color: rgba(136, 204, 255, 0.4);
+  background: rgba(30, 30, 45, 0.5);
+  box-shadow: 
+    0 15px 40px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(136, 204, 255, 0.1);
+}
+
+/* Hero Styles */
+.hero-section h1 {
+  font-size: 4.5rem; /* Larger, more impact */
+  letter-spacing: -0.02em; /* Tighter for modern feel */
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #88ccff 50%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite; /* Subtle moving shine */
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.headline {
+  font-size: 1.4rem;
+  color: #aaccff;
+  font-weight: 400;
+  margin-top: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.summary {
+  margin-top: 2rem;
+  color: rgba(230, 240, 255, 0.9);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  max-width: 60ch; /* Optimal reading length */
+}
+
+.social-links {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.social-pill {
+  padding: 0.6rem 1.5rem;
+  background: rgba(136, 204, 255, 0.05);
+  border: 1px solid rgba(136, 204, 255, 0.15);
+  border-radius: 50px; /* Full pill shape */
+  color: #88ccff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.social-pill:hover {
+  background: rgba(136, 204, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(136, 204, 255, 0.2);
+  border-color: rgba(136, 204, 255, 0.4);
+}
+
+/* Sections */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #88ccff;
+  padding-left: 1rem;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.project-header h3 {
+  margin: 0;
+  color: #88ccff;
+}
+
+.project-type {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.tech-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.impact-bullets {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.link-button {
+  font-size: 0.85rem;
+  color: #88ccff;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+
+.link-button:hover {
+  border-bottom: 1px solid #88ccff;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category h4 {
+  margin-top: 0;
+  color: #88ccff;
+  font-size: 1.1rem;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.skill-level {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-top: 0.2rem;
+}
+
+/* Experience */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.exp-header h3 {
+  margin: 0;
+  color: #88ccff;
+}
+
+.company {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+.dev-translation {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(136, 204, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.dev-translation strong {
+  color: #88ccff;
+}
+
+/* Certifications */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card h4 {
+  margin: 0;
+  color: #88ccff;
+}
+
+.cert-date {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* R3F Canvas Container */
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: all;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
