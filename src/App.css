@@ -78,8 +78,8 @@
     /* BASE: fully opaque gradient (NO alpha → letters never go invisible) */
     linear-gradient(
       135deg,
-      lch(78.17% 35.9 291.86) 0%,
-      lch(84.32% 24.45 283.07) 30%,
+      lch(85.07% 22.8 267.08) 0%,
+      lch(90.37% 14.62 267.09) 30%,
       lch(98% 2 295) 50%,          /* stable bright ridge */
       lch(85.92% 21.56 277.05) 64%,
       lch(100% 0 296) 100%
