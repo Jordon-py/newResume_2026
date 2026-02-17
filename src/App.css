@@ -78,12 +78,12 @@
     /* BASE: fully opaque gradient (NO alpha → letters never go invisible) */
     linear-gradient(
       135deg,
-      lch(70% 55 294) 0%,
-      lch(34% 62 294) 30%,
+      lch(78.17% 35.9 291.86) 0%,
+      lch(84.32% 24.45 283.07) 30%,
       lch(98% 2 295) 50%,          /* stable bright ridge */
-      lch(26% 58 294) 64%,
+      lch(85.92% 21.56 277.05) 64%,
       lch(100% 0 296) 100%
-    );
+    ); 
 
   background-repeat: no-repeat;
   background-size:
