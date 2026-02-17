@@ -16,50 +16,136 @@
 
 /* Glassmorphism System - Luxury Update */
 .glass-card {
-  background: rgba(20, 20, 30, 0.4); /* Darker base for contrast */
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.15); /* Highlight top edge */
-  border-left: 1px solid rgba(255, 255, 255, 0.15); /* Highlight left edge */
+  background: lch(3.22% 15.6 290.47 / 0.4); /* Darker base for contrast */
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid lch(100% 0 0 / 0.08);
+  border-top: 1px solid lch(100% 0 0 / 0.15); /* Highlight top edge */
+  border-left: 1px solid lch(100% 0 0 / 0.15); /* Highlight left edge */
   border-radius: 24px; /* Softer, more modern curves */
   padding: 2.5rem;
   box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Inner stroke */
+    0 8px 32px 0 lch(10, 0, 0, 0.5),
+    inset 0 0 5px 2px lch(15, 225, 255, 0.05); /* Inner stroke */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like ease */
 }
 
 .glass-card:hover {
-  border-color: rgba(136, 204, 255, 0.4);
-  background: rgba(30, 30, 45, 0.5);
+  border-color: lch(10, 204, 255, 0.3);
+  background: lch(10, 130, 145, 0.6);
   box-shadow: 
-    0 15px 40px 0 rgba(0, 0, 0, 0.6),
-    inset 0 0 0 1px rgba(136, 204, 255, 0.1);
+    0 15px 40px 0 lch(10, 0, 0, 0.6),
+    inset 0 0 5px 1px lch(10, 204, 255, 0.2);
 }
 
-/* Hero Styles */
+/* Premium Hero Shine — stable base + specular sweep inside letters */
 .hero-section h1 {
-  font-size: 4.5rem; /* Larger, more impact */
-  letter-spacing: -0.02em; /* Tighter for modern feel */
+  /* ====== knobs (tune these) ====== */
+  --base-speed: 6.5s;               /* slow base drift */
+  --spec-speed: 3.9s;               /* specular sweep cycle */
+  --base-travel: 260%;              /* base gradient travel distance */
+  --spec-off: -220%;                /* start fully off-left */
+  --spec-on: 220%;                  /* end fully off-right */
+
+  --halo-1: lch(72% 55 294 / 0.20); /* outer glow */
+  --halo-2: lch(66% 60 294 / 0.10); /* wider faint bloom */
+
+  /* ====== typography / box control ====== */
+  font-size: 4.5rem;
+  letter-spacing: -0.02em;
   margin: 0;
-  background: linear-gradient(135deg, #ffffff 0%, #88ccff 50%, #ffffff 100%);
-  background-size: 200% auto;
+
+  display: inline-block;     /* prevent full-width sweep illusion */
+  width: fit-content;
+  max-width: max-content;
+
+  /* Fallback color if text-clip isn't supported */
+  color: lch(80% 35 294);
+
+  /* ====== layered backgrounds (ALL clipped to text) ======
+     Order: TOP first (specular), then BASE. */
+  background-image:
+    /* TOP: specular band (soft shoulders, not harsh white) */
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      lch(100% 0 0 / 0.00) 43%,
+      lch(98% 2 295 / 0.75) 50%,   /* tinted highlight (prevents harsh clipping) */
+      lch(100% 0 0 / 0.00) 57%,
+      transparent 100%
+    ),
+
+    /* BASE: fully opaque gradient (NO alpha → letters never go invisible) */
+    linear-gradient(
+      135deg,
+      lch(70% 55 294) 0%,
+      lch(34% 62 294) 30%,
+      lch(98% 2 295) 50%,          /* stable bright ridge */
+      lch(26% 58 294) 64%,
+      lch(100% 0 296) 100%
+    );
+
+  background-repeat: no-repeat;
+  background-size:
+    240% auto,                     /* spec band width */
+    var(--base-travel) auto;        /* base drift */
+
+  /* Start positions */
+  background-position:
+    var(--spec-off) center,         /* spec off-screen initially */
+    0% center;                      /* base start */
+
+  /* Clip both layers to glyphs */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 5s linear infinite; /* Subtle moving shine */
+
+  /* Premium halo: subtle, not “neon” */
+  filter:
+    drop-shadow(0 0 10px var(--halo-1))
+    drop-shadow(0 0 26px var(--halo-2));
+
+  /* Motion: base drifts slowly; spec sweeps with pauses */
+  animation:
+    heroBaseDrift var(--base-speed) ease-in-out infinite,
+    heroSpecSweep var(--spec-speed) cubic-bezier(0, 0.79, 1, 0.67) infinite;
+
+  will-change: background-position, filter;
 }
 
-@keyframes shine {
-  to {
-    background-position: 200% center;
+/* Slow, continuous base drift */
+@keyframes heroBaseDrift {
+  0%   { background-position: var(--spec-off) center, 0% center; }
+  100% { background-position: var(--spec-off) center, var(--base-travel) center; }
+}
+
+/* Specular sweep: pause (off-left) → sweep → hold (off-right)
+   Loop jump is invisible because both ends are off-screen. */
+@keyframes heroSpecSweep {
+  0%   { background-position: var(--spec-off) center, 0% center; }
+  18%  { background-position: var(--spec-off) center, 0% center; }  /* pause */
+  58%  { background-position: var(--spec-on) center, 0% center; }   /* sweep */
+  100% { background-position: var(--spec-on) center, 0% center; }   /* hold */
+}
+
+/* Clip-text support guard */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-section h1 { color: transparent; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section h1 {
+    animation: none;
+    background-position: 50% center, 50% center;
+    filter: none; /* optional: remove glow for reduced-motion minimalism */
   }
 }
 
+
 .headline {
   font-size: 1.4rem;
-  color: #aaccff;
+  color: #c0d9ff;
   font-weight: 400;
   margin-top: 0.75rem;
   letter-spacing: 0.02em;
@@ -67,7 +153,7 @@
 
 .summary {
   margin-top: 2rem;
-  color: rgba(230, 240, 255, 0.9);
+  color: lch(1230, 240, 255, 0.9);
   line-height: 1.7;
   font-size: 1.05rem;
   max-width: 60ch; /* Optimal reading length */
@@ -81,8 +167,8 @@
 
 .social-pill {
   padding: 0.6rem 1.5rem;
-  background: rgba(136, 204, 255, 0.05);
-  border: 1px solid rgba(136, 204, 255, 0.15);
+  background: lch(1136, 204, 255, 0.05);
+  border: 1px solid lch(1136, 204, 255, 0.15);
   border-radius: 50px; /* Full pill shape */
   color: #88ccff;
   font-size: 0.9rem;
@@ -93,10 +179,10 @@
 }
 
 .social-pill:hover {
-  background: rgba(136, 204, 255, 0.2);
+  background: lch(1136, 204, 255, 0.2);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(136, 204, 255, 0.2);
-  border-color: rgba(136, 204, 255, 0.4);
+  box-shadow: 0 5px 15px lch(1136, 204, 255, 0.2);
+  border-color: lch(1136, 204, 255, 0.4);
 }
 
 /* Sections */
@@ -134,7 +220,7 @@ h2 {
 .tech-badge {
   display: inline-block;
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: lch(1255, 255, 255, 0.1);
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
   margin-right: 0.5rem;
@@ -186,8 +272,8 @@ h2 {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: lch(1255, 255, 255, 0.05);
+  border: 1px solid lch(1255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 0.4rem 0.8rem;
   display: flex;
@@ -227,7 +313,7 @@ h2 {
 .dev-translation {
   margin-top: 1rem;
   padding: 1rem;
-  background: rgba(136, 204, 255, 0.05);
+  background: lch(1136, 204, 255, 0.05);
   border-radius: 8px;
   font-size: 0.85rem;
 }

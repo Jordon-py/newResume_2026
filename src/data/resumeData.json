@@ -81,8 +81,8 @@
       "frontend": ["React", "JavaScript", "Vite", "HTML", "CSS", "Accessibility", "Responsive Design", "React Router"],
       "backend": ["Node.js", "Express", "FastAPI", "Python", "REST API", "JSON", "CORS", "Environment Variables"],
       "data_ml": ["pandas", "NumPy", "scikit-learn", "Regression", "Classification", "ROC AUC", "LogLoss", "Brier Score", "MAE", "RMSE"],
-      "tooling": ["Git", "GitHub", "Vercel", "Heroku", "Linux CLI", "Debugging", "Documentation"],
-      "security": ["Secure Coding", "NIST CSF", "Auth Basics"]
+      "tooling": ["GitHub", "Vercel", "Heroku", "Linux CLI", "Debugging", "Documentation","VSCode", "Netlify"],
+      "security": ["NIST Basics", "Auth Basics"]
     },
     "section_order": [
       "summary",
@@ -114,49 +114,49 @@
     "frontend": {
       "label": "Frontend",
       "items": [
-        { "name": "React (Vite)", "level": "strong" },
-        { "name": "React Router", "level": "working" },
-        { "name": "JavaScript (ES6+)", "level": "strong" },
-        { "name": "HTML5", "level": "strong" },
-        { "name": "CSS3 (responsive & accessible)", "level": "strong" }
+        { "name": "React (Vite)", "level": "Foundation" },
+        { "name": "React Router", "level": "Learning" },
+        { "name": "JavaScript (ES6+)", "level": "Foundation" },
+        { "name": "HTML5", "level": "Foundation" },
+        { "name": "CSS3 (responsive & accessible)", "level": "Foundation" }
       ]
     },
     "backend": {
       "label": "Backend",
       "items": [
-        { "name": "Node.js", "level": "working" },
-        { "name": "Express", "level": "working" },
-        { "name": "FastAPI", "level": "strong" },
-        { "name": "REST API design", "level": "working" },
-        { "name": "Auth basics", "level": "foundation" },
-        { "name": "JSON / schema thinking", "level": "working" }
+        { "name": "Node.js", "level": "Foundation" },
+        { "name": "Express", "level": "Foundation" },
+        { "name": "FastAPI", "level": "Foundation" },
+        { "name": "REST API design", "level": "Strong" },
+        { "name": "Auth basics", "level": "Learning" },
+        { "name": "JSON / schema thinking", "level": "Learning" }
       ]
     },
     "data_ml": {
       "label": "Data / ML",
       "items": [
-        { "name": "Python", "level": "strong" },
-        { "name": "pandas", "level": "working" },
-        { "name": "NumPy", "level": "working" },
-        { "name": "scikit-learn", "level": "working" },
-        { "name": "Preprocessing pipelines", "level": "working" },
-        { "name": "Evaluation (MAE/RMSE, ROC AUC, LogLoss, Brier)", "level": "working" }
+        { "name": "Python", "level": "Foundation" },
+        { "name": "pandas", "level": "Strong" },
+        { "name": "NumPy", "level": "Learning" },
+        { "name": "scikit-learn", "level": "Learning" },
+        { "name": "Preprocessing pipelines", "level": "Learning" },
+        { "name": "Evaluation (MAE/RMSE, ROC AUC, LogLoss, Brier)", "level": "Learning" }
       ]
     },
     "tooling": {
       "label": "DevOps / Tools",
       "items": [
-        { "name": "Git / GitHub", "level": "strong" },
-        { "name": "Vercel", "level": "working" },
-        { "name": "Heroku", "level": "working" },
-        { "name": "Linux CLI", "level": "foundation" }
+        { "name": "Git / GitHub", "level": "Comfortable" },
+        { "name": "Vercel", "level": "Learning" },
+        { "name": "Heroku", "level": "Comfortable" },
+        { "name": "Linux CLI", "level": "Comfortable" }
       ]
     },
     "security_basics": {
       "label": "Security",
       "items": [
-        { "name": "NIST CSF awareness", "level": "foundation" },
-        { "name": "Secure coding practices", "level": "foundation" }
+        { "name": "NIST CSF awareness", "level": "Basic" },
+        { "name": "Secure coding practices", "level": "Learning" }
       ]
     }
   },
@@ -165,7 +165,7 @@
     {
       "name": "NFL Prediction Platform",
       "type": "Full-Stack ML Web App",
-      "dates": { "start": "2025-01", "end": null },
+      "dates": { "start": "2025-06", "end": "In Progress" },
       "stack": ["React (Vite)", "FastAPI", "Python", "scikit-learn"],
       "links": [
         { "label": "Live App", "url": "https://nfl-ml-predictions.vercel.app/" },
@@ -173,7 +173,7 @@
       ],
       "impactBullets": [
         "Built a FastAPI prediction service that loads versioned model bundles (joblib) and returns structured, user-friendly prediction responses consumed by a React frontend.",
-        "Implemented leak-safe, time-aware evaluation and probability calibration; tracked score accuracy (MAE/RMSE) and win probability quality (ROC AUC, Brier).",
+        "Implemented leak-safe, time-aware evaluation and probability calibration; tracked score accuracy (MAE/RMSE) and win probability quality (ROC AUC, Brier).(beginner level but have acheived training some solid models for sports predictions)",
         "Improved production reliability by debugging and resolving cross-environment deployment issues (CORS configuration, environment variables, and API routing) to keep the React↔API integration stable.",
         "Enhanced developer experience with consistent API contracts, structured errors, and reproducible dataset/versioning habits to reduce training/inference drift."
       ],
@@ -182,14 +182,14 @@
           {
             "metric": "ROC AUC",
             "value": 0.91,
-            "context": "win probability baseline",
+            "context": "win probability baseline. What it measures: how well a binary classifier ranks positives above negatives across all thresholds. Think: “If I pick one random positive case and one random negative case, how often does the model give the positive a higher score?” AUC = 0.5 → random guessing, AUC = 1.0 → perfect ranking",
             "note": "From baseline training/eval run; keep updated if you publish a new benchmark."
           },
           {
             "metric": "Brier Score",
             "valueRange": [0.12, 0.13],
-            "context": "calibrated probability baseline",
-            "note": "Lower is better; indicates probability quality (calibration + accuracy)."
+            "context": "calibrated probability baseline. What it measures: average squared difference between predicted probabilities and actual outcomes. Think: “If I predicted 70% probability 100 times, how far off were those predictions on average?” Brier = 0.0 → perfect calibration, Brier = 1.0 → worst possible calibration",
+            "note": "Lower is better from 0.0 - 1.0; indicates in this case ptediction/probability quality (calibration + accuracy)."
           }
         ],
         "engineeringProof": [

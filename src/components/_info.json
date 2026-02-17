@@ -1,0 +1,178 @@
+{ "Tool tips": {
+    "Canvas": {
+      "purpose": "Creates the Three.js renderer + scene + camera context for R3F.",
+      "keyProps": {
+        "camera": {
+          "type": "{ position: [x,y,z], fov: number }",
+          "effect": "Sets initial camera framing (composition).",
+          "gotchas": "Too small far/near can clip fog/objects. FOV too wide makes the scene look 'cheap'.",
+          "perfCost": "none"
+        },
+        "dpr": {
+          "type": "number | [min,max]",
+          "effect": "Controls render resolution; higher DPR = sharper but costlier postFX.",
+          "recommended": "[1,1.25] mobile, [1,1.5] default, [1,2] high-end",
+          "perfCost": "high (indirect via postFX + fill-rate)"
+        },
+        "gl": {
+          "type": "WebGLRenderer params",
+          "effect": "Renderer config (AA, alpha, powerPreference).",
+          "gotchas": "antialias=false needs post AA (SMAA/FXAA) or you’ll get shimmer.",
+          "perfCost": "varies"
+        },
+        "onCreated": {
+          "type": "({ gl }) => void",
+          "effect": "Sets renderer-level flags (sRGB output, filmic tone mapping, physically correct lights).",
+          "gotchas": "Wrong color space/tone mapping = washed-out or overly dark scene.",
+          "perfCost": "none"
+        }
+      }
+    },
+  
+    "color (attach=background)": {
+      "purpose": "Sets scene background color.",
+      "keyProps": {
+        "args": { "type": "[colorString]", "effect": "Background mood + contrast", "gotchas": "Very bright backgrounds reduce bloom readability", "perfCost": "none" }
+      }
+    },
+  
+    "fog (attach=fog)": {
+      "purpose": "Adds depth haze for composition and scale.",
+      "keyProps": {
+        "args": {
+          "type": "[color, near, far]",
+          "effect": "Near/far define where fog starts/ends (linear).",
+          "recommended": "Tune around your camera-to-content distance (yours ~10–30).",
+          "gotchas": "Too aggressive fog hides lines and kills contrast.",
+          "perfCost": "low"
+        }
+      }
+    },
+  
+    "hemisphereLight": {
+      "purpose": "Soft sky/ground fill light (prevents crushed blacks).",
+      "keyProps": {
+        "intensity": { "type": "number", "effect": "Overall fill strength", "recommended": "0.2–0.5", "gotchas": "Too high makes scene flat", "perfCost": "low" },
+        "color": { "type": "color", "effect": "Sky tint", "gotchas": "Over-saturation looks fake", "perfCost": "none" },
+        "groundColor": { "type": "color", "effect": "Ground bounce tint", "gotchas": "Can contaminate neutrals", "perfCost": "none" }
+      }
+    },
+  
+    "directionalLight": {
+      "purpose": "Key/rim lighting with cleaner specular shaping than point-only setups.",
+      "keyProps": {
+        "position": { "type": "[x,y,z]", "effect": "Light direction + highlight placement", "gotchas": "Bad placement = dead highlights", "perfCost": "none" },
+        "intensity": { "type": "number", "effect": "Brightness", "recommended": "0.4–1.5", "gotchas": "Too hot clips bloom", "perfCost": "none" },
+        "color": { "type": "color", "effect": "Color palette control", "gotchas": "Mixed tints can look muddy", "perfCost": "none" }
+      }
+    },
+  
+    "pointLight": {
+      "purpose": "Accent lights for localized glints and color vibe.",
+      "keyProps": {
+        "position": { "type": "[x,y,z]", "effect": "Hotspot placement", "gotchas": "Harsh highlights if overused", "perfCost": "low" },
+        "intensity": { "type": "number", "effect": "Brightness", "recommended": "0.2–1.0 for accents", "gotchas": "Too bright overwhelms bloom", "perfCost": "low" }
+      }
+    },
+  
+    "Environment (drei)": {
+      "purpose": "IBL environment map for reflections + specular realism.",
+      "keyProps": {
+        "preset": { "type": "string", "effect": "Loads a curated HDR-like environment", "recommended": "\"city\" for clean spec", "gotchas": "Higher-res env increases memory", "perfCost": "low–med" },
+        "resolution": { "type": "number", "effect": "Env map resolution (quality knob)", "recommended": "128–256", "gotchas": "Too high on mobile hurts", "perfCost": "med (memory/bandwidth)" }
+      }
+    },
+  
+    "Lightformer (drei)": {
+      "purpose": "Rect/shape light cards inside Environment to sculpt highlight bands.",
+      "keyProps": {
+        "intensity": { "type": "number", "effect": "Strength of the card contribution", "recommended": "0.5–3", "gotchas": "Too high blows out bloom", "perfCost": "low" },
+        "position": { "type": "[x,y,z]", "effect": "Where the highlight comes from", "gotchas": "Placement matters more than intensity", "perfCost": "none" },
+        "scale": { "type": "[x,y,z]", "effect": "Card size (softness of highlight)", "recommended": "large cards = smoother highlights", "gotchas": "Tiny cards look like point lights", "perfCost": "low" }
+      }
+    },
+  
+    "instancedMesh": {
+      "purpose": "Renders many identical meshes in one draw call (your particles).",
+      "keyProps": {
+        "args": { "type": "[geometry, material, count]", "effect": "Sets instance count", "gotchas": "Updating matrices requires instanceMatrix.needsUpdate", "perfCost": "low" },
+        "frustumCulled": { "type": "boolean", "effect": "Prevents incorrect culling for dynamic instances", "recommended": "false for moving instances", "gotchas": "Disabling culling slightly increases render work", "perfCost": "low" }
+      }
+    },
+  
+    "meshPhysicalMaterial": {
+      "purpose": "High-quality PBR material (your 'pearl' spheres).",
+      "keyProps": {
+        "metalness": { "type": "0..1", "effect": "Metal response", "recommended": "0.2–0.6", "gotchas": "Needs Environment to look right", "perfCost": "low" },
+        "roughness": { "type": "0..1", "effect": "Specular sharpness", "recommended": "0.15–0.35", "gotchas": "Too low looks plasticky without good lighting", "perfCost": "low" },
+        "clearcoat": { "type": "0..1", "effect": "Extra glossy layer", "recommended": "0.6–1", "gotchas": "Can over-sharpen highlights", "perfCost": "low" },
+        "emissive / emissiveIntensity": { "type": "color / number", "effect": "Stable glow contribution for Bloom", "recommended": "0.05–0.2 intensity", "gotchas": "Too high makes spheres look self-lit/flat", "perfCost": "low" }
+      }
+    },
+  
+    "lineSegments": {
+      "purpose": "Renders many independent line segments (your connections).",
+      "keyProps": {
+        "frustumCulled": { "type": "boolean", "effect": "Prevents bounds issues for dynamic geometry", "recommended": "false", "gotchas": "Slightly more work off-screen", "perfCost": "low" }
+      }
+    },
+  
+    "bufferGeometry + bufferAttribute": {
+      "purpose": "Holds the dynamic line vertex buffer.",
+      "keyProps": {
+        "usage": { "type": "THREE.DynamicDrawUsage", "effect": "Hints GPU that data changes often", "gotchas": "Forgetting this can reduce throughput", "perfCost": "none" },
+        "setDrawRange": { "type": "(start,count)", "effect": "Draw only the active vertices", "gotchas": "If you don’t set this, zeroed vertices draw at origin", "perfCost": "low (saves work)" }
+      }
+    },
+  
+    "EffectComposer (postprocessing)": {
+      "purpose": "PostFX pipeline (Bloom + Vignette + SMAA).",
+      "keyProps": {
+        "multisampling": { "type": "0|number", "effect": "MSAA in composer (expensive)", "recommended": "0 (use SMAA)", "gotchas": "Turning on MSAA can crush mobile", "perfCost": "high" },
+        "disableNormalPass": { "type": "boolean", "effect": "Skips normal pass if effects don’t need it", "recommended": "true here", "gotchas": "SSAO/N8AO would need normals", "perfCost": "low (saves)" }
+      }
+    },
+  
+    "SMAA (postprocessing)": {
+      "purpose": "Post AA to reduce shimmering without MSAA.",
+      "keyProps": {},
+      "commonMistakes": ["Leaving gl.antialias=false without any post AA.", "Running SMAA at very high DPR on mobile."],
+      "perfCost": "low–med"
+    },
+  
+    "Bloom (postprocessing)": {
+      "purpose": "Glow around bright pixels (lines + emissive spheres + crystals).",
+      "keyProps": {
+        "intensity": { "type": "number", "effect": "Glow strength", "recommended": "0.8–1.3", "gotchas": "Too high = blown highlights", "perfCost": "med" },
+        "luminanceThreshold": { "type": "0..1", "effect": "What counts as 'bright'", "recommended": "0.75–0.9", "gotchas": "High threshold can make bloom disappear", "perfCost": "med" },
+        "mipmapBlur": { "type": "boolean", "effect": "Smoother bloom falloff", "recommended": "true on med/high", "gotchas": "Slight extra cost", "perfCost": "med" }
+      }
+    },
+  
+    "Vignette (postprocessing)": {
+      "purpose": "Subtle edge darkening to focus attention.",
+      "keyProps": {
+        "offset": { "type": "0..1", "effect": "How far from center vignette starts", "recommended": "0.08–0.14", "gotchas": "Too strong reads like a filter", "perfCost": "low" },
+        "darkness": { "type": "0..1", "effect": "Strength", "recommended": "0.35–0.55", "gotchas": "Crushes detail if too high", "perfCost": "low" }
+      }
+    },
+  
+    "OrbitControls (drei)": {
+      "purpose": "Camera interaction + autorotation.",
+      "keyProps": {
+        "enableDamping": { "type": "boolean", "effect": "Smooth camera motion", "recommended": "true", "gotchas": "Requires dampingFactor", "perfCost": "low" },
+        "dampingFactor": { "type": "number", "effect": "Smoothing amount", "recommended": "0.05–0.12", "gotchas": "Too high feels sluggish", "perfCost": "low" },
+        "autoRotateSpeed": { "type": "number", "effect": "Idle motion speed", "recommended": "0.15–0.25", "gotchas": "Fast rotate increases motion sickness", "perfCost": "none" }
+      }
+    },
+  
+    "ContactShadows (drei)": {
+      "purpose": "Soft grounding shadow layer (high ROI depth cue).",
+      "keyProps": {
+        "resolution": { "type": "number", "effect": "Shadow texture resolution", "recommended": "256–512", "gotchas": "High res hurts mobile", "perfCost": "med" },
+        "blur": { "type": "number", "effect": "Softness", "recommended": "2–4", "gotchas": "Too blurry looks like a stain", "perfCost": "med" },
+        "opacity": { "type": "0..1", "effect": "Strength", "recommended": "0.2–0.35", "gotchas": "Too dark looks like a floor", "perfCost": "low" }
+      }
+    }
+  }
+}
