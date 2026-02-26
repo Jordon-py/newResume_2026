@@ -32,6 +32,9 @@ const ProjectCard = ({ project }) => {
       <div className="project-links">
         {project.links.map(link => (
           <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="link-button">
+            {link.url == "https://jades-brow-beauty-e0eaac26db9f.herokuapp.com" ? <image 
+                                                                                    src="jades brow.PNG">
+                                                                                  </image> : "jades brow.png"}
             {link.label}
           </a>
         ))}
