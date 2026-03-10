@@ -15,7 +15,11 @@ function App() {
       <Experience />
       
       <main className="content-container">
-        <Hero basics={resumeData.basics} variant={activeVariant} />
+        <Hero
+          basics={resumeData.basics}
+          variant={activeVariant}
+          contact={resumeData.meta.owner.contact}
+        />
         
         <section className="projects-section">
           <h2>Featured Projects</h2>
