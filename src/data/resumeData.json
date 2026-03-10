@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "resume-json-v2",
-    "lastUpdated": "2026-02-15",
+    "lastUpdated": "2026-03-10",
     "owner": {
       "name": "Christopher Jordon",
       "preferredTitles": [
@@ -25,7 +25,7 @@
     "links_required": [
       { "label": "GitHub", "url": "https://github.com/Jordon-py" },
       { "label": "LinkedIn", "url": "https://www.linkedin.com/in/christopher-jordon-a369092b3" },
-      { "label": "NFL Prediction Platform (Live)", "url": "https://nfl-ml-predictions.vercel.app/" },
+      { "label": "NFL Prediction Platform (Live)", "url": "https://new-nfl-predict.vercel.app/" },
       { "label": "NFL Prediction Platform (Repo)", "url": "https://github.com/Jordon-py/NFL_ML_Predictions" },
       { "label": "CodeArchive / CodeArch (Repo)", "url": "https://github.com/Jordon-py/Code_Arch" },
       { "label": "Jades Brow Beauty (Live)", "url": "https://jades-brow-beauty-e0eaac26db9f.herokuapp.com"},
@@ -168,14 +168,14 @@
       "type": "Full-Stack ML Web App",
       "dates": { "start": "2025-06", "end": "In Progress" },
       "stack": ["React (Vite)", "FastAPI", "Python", "scikit-learn"],
-      "screenshot": "/nfl-offseason-mode.png",
-      "screenshotAlt": "NFL Prediction Platform landing page in offseason mode",
+      "screenshot": "/nfl-forecast-studio-2026.png",
+      "screenshotAlt": "NFL Prediction Platform premium landing page with 2026 glass styling",
       "links": [
-        { "label": "Live App", "url": "https://nfl-ml-predictions.vercel.app/" },
+        { "label": "Live App", "url": "https://new-nfl-predict.vercel.app/" },
         { "label": "Repository", "url": "https://github.com/Jordon-py/NFL_ML_Predictions" }
       ],
       "impactBullets": [
-        "Implemented a dedicated offseason mode with season-context awareness so the landing page remains useful when no live weekly slate is available.",
+        "Redesigned the experience with premium light/dark glass layouts, a protected app shell, and a cleaner landing page so the ML product feels more polished and production ready.",
         "Built a FastAPI prediction service that loads versioned model bundles (joblib) and returns structured, user-friendly prediction responses consumed by a React frontend.",
         "Implemented leak-safe, time-aware evaluation and probability calibration; tracked score accuracy (MAE/RMSE) and win probability quality (ROC AUC, Brier).(beginner level but have acheived training some solid models for sports predictions)",
         "Improved production reliability by debugging and resolving cross-environment deployment issues (CORS configuration, environment variables, and API routing) to keep the React↔API integration stable.",
